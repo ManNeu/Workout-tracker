@@ -4,7 +4,7 @@ const Workout = require("../models/workout");
 const router = require("express").Router();
 
 
-router.post("api/workouts", (req, res) => {
+router.post("/api/workouts", (req, res) => {
     Workout.create({}).then(data => res.json(data))
         .catch(err => {
             console.log(err);
@@ -35,6 +35,11 @@ router.get("/api/workouts", function (req, res) {
 });
 
 router.get("/api/workouts/range", (req, res) => {
+    Workout.create({})
+        .then(data => res.json(data))
+        .catch(err => {
+            res.json(err)
+        })
     // Workout.create({})
     //     .then(data => res.json(data))
     //     .catch(err => {
@@ -43,9 +48,17 @@ router.get("/api/workouts/range", (req, res) => {
     //     });
 });
 
+// router.get("/api/workouts", (req, res) => {
+//     Workout.find({}).then(data => res.json(data))
+//         .catch(err => {
+//             console.log(err);
+//             res.json(err);
+//         });
+// });
 
 
-
-
+// router.get("*", (req, res) => {
+//     res.redirect("/");
+// });
 
 module.exports = router;
